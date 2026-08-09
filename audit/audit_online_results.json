@@ -1,0 +1,1267 @@
+{
+ "environment": {
+  "device": "cuda",
+  "python": "3.14.6",
+  "torch": "2.12.1+cu132",
+  "transformers": "4.56.1",
+  "numpy": "2.4.4",
+  "huggingface_hub": "0.36.2",
+  "threads": 16,
+  "seed": 0,
+  "deterministic": true,
+  "dtype": "float32",
+  "attn_implementation": "eager",
+  "audit_commit": "b070a15dbe6007c228bc6c0ca521fa039146c663",
+  "gpu": "NVIDIA GeForce RTX 4090"
+ },
+ "soc110m5": {
+  "model": "fromthesky/PLDR-LLM-v51-SOC-110M-5",
+  "revision": "de8e539c0ba1829072f4b8c2c5fae3bde0a3a2d2",
+  "modeling_file_sha256": "e5cbaa6c5433364ee15051e644925b0f74c3968159d663ce1aab4fb985ac26f0",
+  "weights_sha256": "cda94017b69e22ad920d3f9be75767a2e5494d7435f9eabcfb3430fe19b53d55",
+  "vocab_size": 32000,
+  "o1_prefix_rows": {
+   "fixed_pair": {
+    "tokens": {
+     "prefix": [
+      1000,
+      2000,
+      3000
+     ],
+     "suffix_a": [
+      4000,
+      5000,
+      6000
+     ],
+     "suffix_b": [
+      4001,
+      5001,
+      6001
+     ]
+    },
+    "suffix_change": [
+     {
+      "max_abs": 0.0,
+      "l2": 0.0,
+      "nonzero": 0,
+      "entries": 32000
+     },
+     {
+      "max_abs": 0.0,
+      "l2": 0.0,
+      "nonzero": 0,
+      "entries": 32000
+     },
+     {
+      "max_abs": 0.0,
+      "l2": 0.0,
+      "nonzero": 0,
+      "entries": 32000
+     }
+    ],
+    "masked_suffix_change": [
+     {
+      "max_abs": 0.0,
+      "l2": 0.0,
+      "nonzero": 0,
+      "entries": 32000
+     },
+     {
+      "max_abs": 0.0,
+      "l2": 0.0,
+      "nonzero": 0,
+      "entries": 32000
+     },
+     {
+      "max_abs": 0.0,
+      "l2": 0.0,
+      "nonzero": 0,
+      "entries": 32000
+     }
+    ],
+    "deductive_per_layer": [
+     {
+      "A": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      },
+      "A_LM": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      },
+      "G_LM": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      }
+     },
+     {
+      "A": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      },
+      "A_LM": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      },
+      "G_LM": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      }
+     },
+     {
+      "A": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      },
+      "A_LM": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      },
+      "G_LM": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      }
+     },
+     {
+      "A": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      },
+      "A_LM": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      },
+      "G_LM": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      }
+     },
+     {
+      "A": {
+       "max_abs": 1.1641532182693481e-10,
+       "l2": 2.766107998197239e-10,
+       "nonzero": 270,
+       "entries": 57344
+      },
+      "A_LM": {
+       "max_abs": 2.7284841053187847e-12,
+       "l2": 2.7284841053187847e-12,
+       "nonzero": 1,
+       "entries": 57344
+      },
+      "G_LM": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      }
+     }
+    ]
+   },
+   "randomized": {
+    "seed": 20260807,
+    "trials": 16,
+    "sequence_length": 12,
+    "prefix_length": 4,
+    "suffix_change": {
+     "max_abs": 0.0,
+     "l2": 0.0,
+     "nonzero": 0,
+     "entries": 2048000
+    },
+    "masked_suffix_change": {
+     "max_abs": 0.0,
+     "l2": 0.0,
+     "nonzero": 0,
+     "entries": 2048000
+    }
+   }
+  },
+  "o2_repeat_call_bitwise": {
+   "comparisons": [
+    {
+     "max_abs": 0.0,
+     "l2": 0.0,
+     "nonzero": 0,
+     "entries": 32000
+    },
+    {
+     "max_abs": 0.0,
+     "l2": 0.0,
+     "nonzero": 0,
+     "entries": 32000
+    },
+    {
+     "max_abs": 0.0,
+     "l2": 0.0,
+     "nonzero": 0,
+     "entries": 32000
+    }
+   ],
+   "all_zero": true
+  },
+  "o3_padding": {
+   "pad_len": 4,
+   "pad_contents": [
+    0,
+    5
+   ],
+   "prompts": [
+    {
+     "prompt_tokens": 38,
+     "pad_content_0": {
+      "final_real_row_delta": {
+       "max_abs": 8.58306884765625e-06,
+       "l2": 0.00037207413079021505,
+       "nonzero": 26715,
+       "entries": 32000
+      },
+      "glm_delta": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      }
+     },
+     "pad_content_5": {
+      "final_real_row_delta": {
+       "max_abs": 8.58306884765625e-06,
+       "l2": 0.00037207413079021505,
+       "nonzero": 26715,
+       "entries": 32000
+      },
+      "glm_delta": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      }
+     },
+     "strip_restores_bitwise": true
+    },
+    {
+     "prompt_tokens": 40,
+     "pad_content_0": {
+      "final_real_row_delta": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 32000
+      },
+      "glm_delta": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      }
+     },
+     "pad_content_5": {
+      "final_real_row_delta": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 32000
+      },
+      "glm_delta": {
+       "max_abs": 0.0,
+       "l2": 0.0,
+       "nonzero": 0,
+       "entries": 57344
+      }
+     },
+     "strip_restores_bitwise": true
+    }
+   ],
+   "note": "padded query rows participate in the query Gram in the current implementations: deltas document that behavior; the deployed contract is the unpadded S=t interface"
+  },
+  "o4_score_equivalence": {
+   "suite_seed": 20260807,
+   "contexts": 8,
+   "multi_token_candidates_per_context": 4,
+   "per_token_absdiff": {
+    "min": 0.0,
+    "median": 0.0,
+    "max": 3.340019256281579e-06,
+    "mean": 1.0882077094501174e-07,
+    "n": 160
+   },
+   "per_candidate_absdiff": {
+    "min": 0.0,
+    "median": 0.0,
+    "max": 3.340019256725668e-06,
+    "mean": 3.9220038161591475e-07,
+    "n": 32
+   },
+   "argmax_flips": 0,
+   "discordant_pairs_total": 0,
+   "pairs_total": 48,
+   "single_token_exact_coincidence": true,
+   "instances": [
+    {
+     "prompt_index": 0,
+     "context_tokens": 38,
+     "candidates": [
+      [
+       290,
+       15709,
+       269,
+       264
+      ],
+      [
+       290,
+       15709,
+       269,
+       264,
+       6882,
+       276,
+       420,
+       2744
+      ],
+      [
+       354,
+       276,
+       264,
+       616
+      ],
+      [
+       25739,
+       8542,
+       17405,
+       7273
+      ]
+     ],
+     "rank_comparison": {
+      "argmax_flip": false,
+      "discordant_pairs": 0,
+      "pairs": 6
+     }
+    },
+    {
+     "prompt_index": 1,
+     "context_tokens": 40,
+     "candidates": [
+      [
+       290,
+       12856,
+       276,
+       270
+      ],
+      [
+       290,
+       12856,
+       276,
+       270,
+       12856,
+       269,
+       802,
+       26049
+      ],
+      [
+       442,
+       264,
+       12856,
+       263
+      ],
+      [
+       3864,
+       7595,
+       14397,
+       21814
+      ]
+     ],
+     "rank_comparison": {
+      "argmax_flip": false,
+      "discordant_pairs": 0,
+      "pairs": 6
+     }
+    },
+    {
+     "prompt_index": 2,
+     "context_tokens": 42,
+     "candidates": [
+      [
+       290,
+       4677,
+       298,
+       270
+      ],
+      [
+       290,
+       4677,
+       298,
+       270,
+       976,
+       2493,
+       269,
+       342
+      ],
+      [
+       278,
+       352,
+       1844,
+       302
+      ],
+      [
+       344,
+       17208,
+       17432,
+       13959
+      ]
+     ],
+     "rank_comparison": {
+      "argmax_flip": false,
+      "discordant_pairs": 0,
+      "pairs": 6
+     }
+    },
+    {
+     "prompt_index": 3,
+     "context_tokens": 41,
+     "candidates": [
+      [
+       290,
+       4642,
+       6555,
+       298
+      ],
+      [
+       290,
+       4642,
+       6555,
+       298,
+       270,
+       655,
+       344,
+       351
+      ],
+      [
+       444,
+       264,
+       4642,
+       6555
+      ],
+      [
+       13504,
+       29975,
+       7324,
+       18466
+      ]
+     ],
+     "rank_comparison": {
+      "argmax_flip": false,
+      "discordant_pairs": 0,
+      "pairs": 6
+     }
+    },
+    {
+     "prompt_index": 4,
+     "context_tokens": 43,
+     "candidates": [
+      [
+       14020,
+       277,
+       265,
+       273
+      ],
+      [
+       14020,
+       277,
+       265,
+       273,
+       272,
+       852,
+       263,
+       307
+      ],
+      [
+       353,
+       270,
+       2613,
+       3213
+      ],
+      [
+       29988,
+       4697,
+       6985,
+       19341
+      ]
+     ],
+     "rank_comparison": {
+      "argmax_flip": false,
+      "discordant_pairs": 0,
+      "pairs": 6
+     }
+    },
+    {
+     "prompt_index": 5,
+     "context_tokens": 40,
+     "candidates": [
+      [
+       290,
+       265,
+       7471,
+       3586
+      ],
+      [
+       290,
+       265,
+       7471,
+       3586,
+       266,
+       310,
+       420,
+       292
+      ],
+      [
+       354,
+       276,
+       270,
+       392
+      ],
+      [
+       880,
+       15977,
+       18022,
+       3339
+      ]
+     ],
+     "rank_comparison": {
+      "argmax_flip": false,
+      "discordant_pairs": 0,
+      "pairs": 6
+     }
+    },
+    {
+     "prompt_index": 6,
+     "context_tokens": 32,
+     "candidates": [
+      [
+       290,
+       559,
+       280,
+       266
+      ],
+      [
+       290,
+       559,
+       280,
+       266,
+       3102,
+       1259,
+       298,
+       4982
+      ],
+      [
+       11600,
+       1259,
+       298,
+       4982
+      ],
+      [
+       9665,
+       10710,
+       19378,
+       21313
+      ]
+     ],
+     "rank_comparison": {
+      "argmax_flip": false,
+      "discordant_pairs": 0,
+      "pairs": 6
+     }
+    },
+    {
+     "prompt_index": 7,
+     "context_tokens": 34,
+     "candidates": [
+      [
+       290,
+       2578,
+       298,
+       14854
+      ],
+      [
+       290,
+       2578,
+       298,
+       14854,
+       263,
+       267,
+       264,
+       7609
+      ],
+      [
+       278,
+       298,
+       271,
+       264
+      ],
+      [
+       24465,
+       11222,
+       14443,
+       13164
+      ]
+     ],
+     "rank_comparison": {
+      "argmax_flip": false,
+      "discordant_pairs": 0,
+      "pairs": 6
+     }
+    }
+   ],
+   "formula": "sequential: sum_i log p(y_i | x, y_{:i}) via one final-row prefix call per token; block: one call on (x+y)[:-1], rows n-1+i; log-softmax in float64 on float32 logits"
+  }
+ },
+ "soc110m1": {
+  "model": "fromthesky/PLDR-LLM-v51-SOC-110M-1",
+  "revision": "7a34e2ca9aa78038683677cfda17fe3a9fe6da8a",
+  "modeling_file_sha256": "e5cbaa6c5433364ee15051e644925b0f74c3968159d663ce1aab4fb985ac26f0",
+  "weights_sha256": "7a1987a214f418831e6981c8cdf873101144820db845694f2f2d1231188a891d",
+  "vocab_size": 32000,
+  "o1_prefix_rows": {
+   "fixed_pair": {
+    "tokens": {
+     "prefix": [
+      1000,
+      2000,
+      3000
+     ],
+     "suffix_a": [
+      4000,
+      5000,
+      6000
+     ],
+     "suffix_b": [
+      4001,
+      5001,
+      6001
+     ]
+    },
+    "suffix_change": [
+     {
+      "max_abs": 0.0,
+      "l2": 0.0,
+      "nonzero": 0,
+      "entries": 32000
+     },
+     {
+      "max_abs": 0.0001068115234375,
+      "l2": 0.0066862983681533926,
+      "nonzero": 31978,
+      "entries": 32000
+     },
+     {
+      "max_abs": 9.5367431640625e-05,
+      "l2": 0.0036256495656229303,
+      "nonzero": 31573,
+      "entries": 32000
+     }
+    ],
+    "masked_suffix_change": [
+     {
+      "max_abs": 0.0,
+      "l2": 0.0,
+      "nonzero": 0,
+      "entries": 32000
+     },
+     {
+      "max_abs": 0.0001010894775390625,
+      "l2": 0.007074647748554731,
+      "nonzero": 31996,
+      "entries": 32000
+     },
+     {
+      "max_abs": 0.00014543533325195312,
+      "l2": 0.012162231187559954,
+      "nonzero": 32000,
+      "entries": 32000
+     }
+    ],
+    "deductive_per_layer": [
+     {
+      "A": {
+       "max_abs": 5.45848160982132e-06,
+       "l2": 3.1493355189007375e-05,
+       "nonzero": 50282,
+       "entries": 57344
+      },
+      "A_LM": {
+       "max_abs": 1.0011717677116394e-08,
+       "l2": 4.120006075199691e-08,
+       "nonzero": 17676,
+       "entries": 57344
+      },
+      "G_LM": {
+       "max_abs": 0.0009555816650390625,
+       "l2": 0.002466731020536427,
+       "nonzero": 14726,
+       "entries": 57344
+      }
+     },
+     {
+      "A": {
+       "max_abs": 7.682602154091e-05,
+       "l2": 0.0004292779536158549,
+       "nonzero": 55982,
+       "entries": 57344
+      },
+      "A_LM": {
+       "max_abs": 1.8742866814136505e-08,
+       "l2": 7.599712011222013e-08,
+       "nonzero": 37627,
+       "entries": 57344
+      },
+      "G_LM": {
+       "max_abs": 0.01258087158203125,
+       "l2": 0.01530914634428527,
+       "nonzero": 12859,
+       "entries": 57344
+      }
+     },
+     {
+      "A": {
+       "max_abs": 0.00017029419541358948,
+       "l2": 0.0006582736412591121,
+       "nonzero": 53929,
+       "entries": 57344
+      },
+      "A_LM": {
+       "max_abs": 5.80446794629097e-07,
+       "l2": 1.2668968265113132e-06,
+       "nonzero": 35683,
+       "entries": 57344
+      },
+      "G_LM": {
+       "max_abs": 0.030452728271484375,
+       "l2": 0.033742369106131764,
+       "nonzero": 21127,
+       "entries": 57344
+      }
+     },
+     {
+      "A": {
+       "max_abs": 0.0010791420936584473,
+       "l2": 0.00612215625313731,
+       "nonzero": 53066,
+       "entries": 57344
+      },
+      "A_LM": {
+       "max_abs": 4.188716411590576e-05,
+       "l2": 9.377735159588247e-05,
+       "nonzero": 39433,
+       "entries": 57344
+      },
+      "G_LM": {
+       "max_abs": 0.0005655586719512939,
+       "l2": 0.001670528000085753,
+       "nonzero": 30549,
+       "entries": 57344
+      }
+     },
+     {
+      "A": {
+       "max_abs": 0.0018869413106585853,
+       "l2": 0.012556727057364304,
+       "nonzero": 56981,
+       "entries": 57344
+      },
+      "A_LM": {
+       "max_abs": 0.0002389848232269287,
+       "l2": 0.00032080464059399907,
+       "nonzero": 53810,
+       "entries": 57344
+      },
+      "G_LM": {
+       "max_abs": 0.013885498046875,
+       "l2": 0.045764675929494895,
+       "nonzero": 53908,
+       "entries": 57344
+      }
+     }
+    ]
+   },
+   "randomized": {
+    "seed": 20260807,
+    "trials": 16,
+    "sequence_length": 12,
+    "prefix_length": 4,
+    "suffix_change": {
+     "max_abs": 0.00093841552734375,
+     "l2": 0.13141820323919667,
+     "nonzero": 1525617,
+     "entries": 2048000
+    },
+    "masked_suffix_change": {
+     "max_abs": 0.0007414817810058594,
+     "l2": 0.09108669617196581,
+     "nonzero": 1522601,
+     "entries": 2048000
+    }
+   }
+  },
+  "o2_repeat_call_bitwise": {
+   "comparisons": [
+    {
+     "max_abs": 0.0,
+     "l2": 0.0,
+     "nonzero": 0,
+     "entries": 32000
+    },
+    {
+     "max_abs": 0.0,
+     "l2": 0.0,
+     "nonzero": 0,
+     "entries": 32000
+    },
+    {
+     "max_abs": 0.0,
+     "l2": 0.0,
+     "nonzero": 0,
+     "entries": 32000
+    }
+   ],
+   "all_zero": true
+  },
+  "o3_padding": {
+   "pad_len": 4,
+   "pad_contents": [
+    0,
+    5
+   ],
+   "prompts": [
+    {
+     "prompt_tokens": 38,
+     "pad_content_0": {
+      "final_real_row_delta": {
+       "max_abs": 3.528594970703125e-05,
+       "l2": 0.002283965786902978,
+       "nonzero": 31706,
+       "entries": 32000
+      },
+      "glm_delta": {
+       "max_abs": 0.008410677313804626,
+       "l2": 0.01982638898005862,
+       "nonzero": 49361,
+       "entries": 57344
+      }
+     },
+     "pad_content_5": {
+      "final_real_row_delta": {
+       "max_abs": 5.817413330078125e-05,
+       "l2": 0.0022023137694475187,
+       "nonzero": 31046,
+       "entries": 32000
+      },
+      "glm_delta": {
+       "max_abs": 0.004543304443359375,
+       "l2": 0.015038313212538668,
+       "nonzero": 50393,
+       "entries": 57344
+      }
+     },
+     "strip_restores_bitwise": true
+    },
+    {
+     "prompt_tokens": 40,
+     "pad_content_0": {
+      "final_real_row_delta": {
+       "max_abs": 7.43865966796875e-05,
+       "l2": 0.006629196544313226,
+       "nonzero": 31997,
+       "entries": 32000
+      },
+      "glm_delta": {
+       "max_abs": 0.012468576431274414,
+       "l2": 0.031628197160053294,
+       "nonzero": 50125,
+       "entries": 57344
+      }
+     },
+     "pad_content_5": {
+      "final_real_row_delta": {
+       "max_abs": 5.054473876953125e-05,
+       "l2": 0.0018922455203066013,
+       "nonzero": 30824,
+       "entries": 32000
+      },
+      "glm_delta": {
+       "max_abs": 0.0045013427734375,
+       "l2": 0.01483413993200011,
+       "nonzero": 51150,
+       "entries": 57344
+      }
+     },
+     "strip_restores_bitwise": true
+    }
+   ],
+   "note": "padded query rows participate in the query Gram in the current implementations: deltas document that behavior; the deployed contract is the unpadded S=t interface"
+  },
+  "o4_score_equivalence": {
+   "suite_seed": 20260807,
+   "contexts": 8,
+   "multi_token_candidates_per_context": 4,
+   "per_token_absdiff": {
+    "min": 0.0,
+    "median": 2.3569647897847545e-06,
+    "max": 0.00015202985972928573,
+    "mean": 8.306501100933453e-06,
+    "n": 160
+   },
+   "per_candidate_absdiff": {
+    "min": 4.204962777976107e-07,
+    "median": 1.4007006691407753e-05,
+    "max": 0.0002206255077936703,
+    "mean": 3.087527336492757e-05,
+    "n": 32
+   },
+   "argmax_flips": 0,
+   "discordant_pairs_total": 0,
+   "pairs_total": 48,
+   "single_token_exact_coincidence": true,
+   "instances": [
+    {
+     "prompt_index": 0,
+     "context_tokens": 38,
+     "candidates": [
+      [
+       290,
+       15709,
+       269,
+       264
+      ],
+      [
+       290,
+       15709,
+       269,
+       264,
+       6882,
+       276,
+       270,
+       1716
+      ],
+      [
+       354,
+       276,
+       264,
+       397
+      ],
+      [
+       25739,
+       8542,
+       17405,
+       7273
+      ]
+     ],
+     "rank_comparison": {
+      "argmax_flip": false,
+      "discordant_pairs": 0,
+      "pairs": 6
+     }
+    },
+    {
+     "prompt_index": 1,
+     "context_tokens": 40,
+     "candidates": [
+      [
+       290,
+       17572,
+       882,
+       633
+      ],
+      [
+       290,
+       17572,
+       882,
+       633,
+       509,
+       9410,
+       276,
+       264
+      ],
+      [
+       353,
+       264,
+       616,
+       269
+      ],
+      [
+       3864,
+       7595,
+       14397,
+       21814
+      ]
+     ],
+     "rank_comparison": {
+      "argmax_flip": false,
+      "discordant_pairs": 0,
+      "pairs": 6
+     }
+    },
+    {
+     "prompt_index": 2,
+     "context_tokens": 42,
+     "candidates": [
+      [
+       278,
+       280,
+       337,
+       311
+      ],
+      [
+       278,
+       280,
+       337,
+       311,
+       270,
+       1842,
+       269,
+       264
+      ],
+      [
+       290,
+       1329,
+       298,
+       270
+      ],
+      [
+       344,
+       17208,
+       17432,
+       13959
+      ]
+     ],
+     "rank_comparison": {
+      "argmax_flip": false,
+      "discordant_pairs": 0,
+      "pairs": 6
+     }
+    },
+    {
+     "prompt_index": 3,
+     "context_tokens": 41,
+     "candidates": [
+      [
+       290,
+       4642,
+       6555,
+       298
+      ],
+      [
+       290,
+       4642,
+       6555,
+       298,
+       270,
+       392,
+       403,
+       639
+      ],
+      [
+       340,
+       298,
+       270,
+       342
+      ],
+      [
+       13504,
+       29975,
+       7324,
+       18466
+      ]
+     ],
+     "rank_comparison": {
+      "argmax_flip": false,
+      "discordant_pairs": 0,
+      "pairs": 6
+     }
+    },
+    {
+     "prompt_index": 4,
+     "context_tokens": 43,
+     "candidates": [
+      [
+       5866,
+       306,
+       264,
+       4478
+      ],
+      [
+       5866,
+       306,
+       264,
+       4478,
+       267,
+       712,
+       1505,
+       262
+      ],
+      [
+       287,
+       265,
+       273,
+       328
+      ],
+      [
+       29988,
+       4697,
+       6985,
+       19341
+      ]
+     ],
+     "rank_comparison": {
+      "argmax_flip": false,
+      "discordant_pairs": 0,
+      "pairs": 6
+     }
+    },
+    {
+     "prompt_index": 5,
+     "context_tokens": 40,
+     "candidates": [
+      [
+       290,
+       265,
+       7471,
+       3586
+      ],
+      [
+       290,
+       265,
+       7471,
+       3586,
+       266,
+       291,
+       311,
+       388
+      ],
+      [
+       354,
+       276,
+       264,
+       397
+      ],
+      [
+       880,
+       15977,
+       18022,
+       3339
+      ]
+     ],
+     "rank_comparison": {
+      "argmax_flip": false,
+      "discordant_pairs": 0,
+      "pairs": 6
+     }
+    },
+    {
+     "prompt_index": 6,
+     "context_tokens": 32,
+     "candidates": [
+      [
+       290,
+       559,
+       12259,
+       3102
+      ],
+      [
+       290,
+       559,
+       12259,
+       3102,
+       1259,
+       269,
+       265,
+       274
+      ],
+      [
+       11600,
+       1259,
+       298,
+       346
+      ],
+      [
+       9665,
+       10710,
+       19378,
+       21313
+      ]
+     ],
+     "rank_comparison": {
+      "argmax_flip": false,
+      "discordant_pairs": 0,
+      "pairs": 6
+     }
+    },
+    {
+     "prompt_index": 7,
+     "context_tokens": 34,
+     "candidates": [
+      [
+       290,
+       570,
+       298,
+       333
+      ],
+      [
+       290,
+       570,
+       298,
+       333,
+       1852,
+       279,
+       285,
+       298
+      ],
+      [
+       340,
+       298,
+       270,
+       441
+      ],
+      [
+       24465,
+       11222,
+       14443,
+       13164
+      ]
+     ],
+     "rank_comparison": {
+      "argmax_flip": false,
+      "discordant_pairs": 0,
+      "pairs": 6
+     }
+    }
+   ],
+   "formula": "sequential: sum_i log p(y_i | x, y_{:i}) via one final-row prefix call per token; block: one call on (x+y)[:-1], rows n-1+i; log-softmax in float64 on float32 logits"
+  }
+ },
+ "raw_records": {
+  "file": "audit_online_raw.npz",
+  "sha256": "b9e748d5175edd773db60326ec30f4b893b3488839daf15dd8eae63c101dfe70"
+ }
+}

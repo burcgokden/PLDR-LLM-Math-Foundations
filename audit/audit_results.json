@@ -1,0 +1,862 @@
+{
+ "environment": {
+  "model": "fromthesky/PLDR-LLM-v51-SOC-110M-5",
+  "revision": "de8e539c0ba1829072f4b8c2c5fae3bde0a3a2d2",
+  "device": "cuda",
+  "python": "3.14.6",
+  "torch": "2.12.1+cu132",
+  "transformers": "4.56.1",
+  "numpy": "2.4.4",
+  "huggingface_hub": "0.36.2",
+  "seed": 0,
+  "cudnn_deterministic": true,
+  "modeling_file_sha256": "e5cbaa6c5433364ee15051e644925b0f74c3968159d663ce1aab4fb985ac26f0",
+  "audit_commit": "a7a7e47c2934e764e2484a4e3a74a4527105017e",
+  "gpu": "NVIDIA GeForce RTX 4090"
+ },
+ "twirl_analytic": {
+  "C_theta": 44968.27712271532,
+  "C_over_1024": 43.91433312765168,
+  "table": {
+   "64": {
+    "worst": 0.9999996624873038,
+    "median": 0.27497705612426776,
+    "frac_below_01": 0.3635912698412698,
+    "frac_below_001": 0.031746031746031744
+   },
+   "256": {
+    "worst": 0.9999945985687546,
+    "median": 0.05372221955183145,
+    "frac_below_01": 0.5734126984126984,
+    "frac_below_001": 0.21577380952380953
+   },
+   "1024": {
+    "worst": 0.9999135779644395,
+    "median": 0.012758660064596179,
+    "frac_below_01": 0.7534722222222222,
+    "frac_below_001": 0.45882936507936506
+   }
+  },
+  "slowest_inplane_mult_1024": 0.9968951306183299,
+  "worst_mult_1024": 0.9999135779644395
+ },
+ "spectra": {
+  "A_s1": {
+   "min": 0.025242731227903093,
+   "median": 0.12196035018757015,
+   "max": 34.75496163030412
+  },
+  "A_s2_over_s1": {
+   "min": 1.3842537069364542e-19,
+   "median": 8.69245497227783e-17,
+   "max": 1.3320765554214718e-08
+  },
+  "A_numrank": {
+   "min": 1.0,
+   "median": 1.0,
+   "max": 1.0
+  },
+  "ALM_s1": {
+   "min": 6.399999818995637e-08,
+   "median": 0.0011374894229622986,
+   "max": 6194.973150984919
+  },
+  "ALM_s2_over_s1": {
+   "min": 6.158459849705108e-17,
+   "median": 0.2722967805143767,
+   "max": 0.6487782560525402
+  },
+  "ALM_numrank": {
+   "min": 1.0,
+   "median": 62.5,
+   "max": 64.0
+  },
+  "ALM_min": {
+   "min": 9.999999717180685e-10,
+   "median": 2.808671961673781e-09,
+   "max": 1.8122459266578517e-07
+  },
+  "ALM_max": {
+   "min": 9.999999717180685e-10,
+   "median": 0.0001638088360778056,
+   "max": 6194.97314453125
+  },
+  "crosshead_rms": {
+   "min": 0.0,
+   "median": 0.0,
+   "max": 6.249064633812029e-12
+  },
+  "crosshead_rel": {
+   "min": 0.0,
+   "median": 0.0,
+   "max": 1.5843772516177523e-08
+  },
+  "rowvar_ratio": {
+   "min": 1.1014697183855948e-13,
+   "median": 3.7706052473038265e-13,
+   "max": 5.449598021109447e-13
+  },
+  "A_numrank_hist": {
+   "1": 560
+  },
+  "ALM_numrank_hist": {
+   "1": 56,
+   "12": 8,
+   "14": 8,
+   "21": 8,
+   "32": 8,
+   "34": 8,
+   "36": 8,
+   "38": 8,
+   "40": 8,
+   "41": 8,
+   "42": 8,
+   "46": 8,
+   "48": 8,
+   "51": 16,
+   "52": 8,
+   "55": 8,
+   "57": 8,
+   "59": 8,
+   "61": 32,
+   "62": 48,
+   "63": 128,
+   "64": 152
+  }
+ },
+ "spectra_init": {
+  "A_s1": {
+   "min": 21.946560250382795,
+   "median": 33.090623517867826,
+   "max": 51.68599890702064
+  },
+  "A_s2_over_s1": {
+   "min": 0.3424600200611708,
+   "median": 0.6882029363264983,
+   "max": 0.9946408677214402
+  },
+  "A_numrank": {
+   "min": 63.0,
+   "median": 63.0,
+   "max": 63.0
+  },
+  "ALM_s1": {
+   "min": 0.8099208394576078,
+   "median": 1.0204632085112246,
+   "max": 2.3779545494277103
+  },
+  "ALM_s2_over_s1": {
+   "min": 0.2545542223986357,
+   "median": 0.41010878560961506,
+   "max": 0.5528556198682025
+  },
+  "ALM_numrank": {
+   "min": 63.0,
+   "median": 64.0,
+   "max": 64.0
+  },
+  "ALM_min": {
+   "min": 1.0000024142087227e-09,
+   "median": 1.5086329407942856e-09,
+   "max": 3.814839288907024e-08
+  },
+  "ALM_max": {
+   "min": 0.14931663870811462,
+   "median": 0.2739364057779312,
+   "max": 1.0551748275756836
+  },
+  "crosshead_rms": {
+   "min": 1.1174020767211914,
+   "median": 1.191505253314972,
+   "max": 1.306556224822998
+  },
+  "crosshead_rel": {
+   "min": 1.1174025535583496,
+   "median": 1.1915058493614197,
+   "max": 1.3065568208694458
+  },
+  "rowvar_ratio": {
+   "min": 0.9262827634811401,
+   "median": 0.9891738891601562,
+   "max": 0.996173620223999
+  },
+  "A_numrank_hist": {
+   "63": 560
+  },
+  "ALM_numrank_hist": {
+   "63": 4,
+   "64": 556
+  },
+  "note": "random-initialization control under the HF-port _init_weights law (Xavier-uniform W, P, a and dense weights); NOT the native SOC training initialization -- see spectra_init_native"
+ },
+ "spectra_init_native": {
+  "A_s1": {
+   "min": 22.70087742095309,
+   "median": 32.825828041786366,
+   "max": 50.03721781460758
+  },
+  "A_s2_over_s1": {
+   "min": 0.3737732916026702,
+   "median": 0.6881078684141813,
+   "max": 0.9950261539631342
+  },
+  "A_numrank": {
+   "min": 63.0,
+   "median": 63.0,
+   "max": 63.0
+  },
+  "ALM_s1": {
+   "min": 0.7877550325853202,
+   "median": 1.0124922434146613,
+   "max": 2.3790039441799675
+  },
+  "ALM_s2_over_s1": {
+   "min": 0.2500245736792712,
+   "median": 0.4172833044693554,
+   "max": 0.5997037147926365
+  },
+  "ALM_numrank": {
+   "min": 63.0,
+   "median": 64.0,
+   "max": 64.0
+  },
+  "ALM_min": {
+   "min": 9.999999717180685e-10,
+   "median": 1.4934173342417978e-09,
+   "max": 5.207793662975746e-08
+  },
+  "ALM_max": {
+   "min": 0.1333727389574051,
+   "median": 0.29226867854595184,
+   "max": 1.1548686027526855
+  },
+  "crosshead_rms": {
+   "min": 1.1064465045928955,
+   "median": 1.19044691324234,
+   "max": 1.3053841590881348
+  },
+  "crosshead_rel": {
+   "min": 1.1064469814300537,
+   "median": 1.1904475092887878,
+   "max": 1.3053847551345825
+  },
+  "rowvar_ratio": {
+   "min": 0.9507895708084106,
+   "median": 0.9893595576286316,
+   "max": 0.9961537718772888
+  },
+  "A_numrank_hist": {
+   "63": 560
+  },
+  "ALM_numrank_hist": {
+   "63": 4,
+   "64": 556
+  },
+  "note": "random-initialization control with W, P, a re-drawn Xavier-normal per the native SOC training law (dense weights stay Xavier-uniform as in both codes); matches the law the audited checkpoint was actually trained from"
+ },
+ "nonfinite_matrices": 0,
+ "ln_scale_error": {
+  "rowvar_DS": {
+   "min": 0.0,
+   "median": 2.585779657238163e-05,
+   "max": 0.28793004155158997
+  },
+  "direct_rel": {
+   "min": 0.0,
+   "median": 0.00045909495233594595,
+   "max": 4.328201267372266
+  },
+  "direct_abs": {
+   "min": 0.0,
+   "median": 5.438583133141537e-10,
+   "max": 1.1169181339462504e-05
+  },
+  "proxy": {
+   "min": 1.7365329586023104e-06,
+   "median": 0.01933652762927317,
+   "max": 1.2332480908973936e+40
+  },
+  "n_rows": 35840,
+  "n_zero_var_rows": 14
+ },
+ "twirl_empirical": {
+  "per_instance": {
+   "offcomm_suppression": {
+    "min": -0.014209439430803661,
+    "median": 0.09490377793761201,
+    "max": 0.46444198340238396
+   },
+   "commutant_frac_unrot": {
+    "min": 0.03942640681170696,
+    "median": 0.06928770631655112,
+    "max": 0.15744935430937743
+   },
+   "commutant_frac_rot": {
+    "min": 0.04158027574310229,
+    "median": 0.10860968510952708,
+    "max": 0.17978066926310438
+   },
+   "n_instances": 40,
+   "label": "per-(prompt, layer) instance ratios; range over all 40 instances"
+  },
+  "prompt_pooled_per_layer": {
+   "offcomm_suppression": {
+    "min": 8.873801596631647e-05,
+    "median": 0.10626187577032975,
+    "max": 0.42835466686804813
+   },
+   "commutant_frac_unrot": {
+    "min": 0.0448468581652782,
+    "median": 0.07179328643753793,
+    "max": 0.12558996780203194
+   },
+   "commutant_frac_rot": {
+    "min": 0.04522059781251913,
+    "median": 0.11090764278786223,
+    "max": 0.1384546876061714
+   },
+   "label": "prompt-pooled, per-layer energy ratios (energy-weighted over prompts); range over the five layers only"
+  },
+  "stationarity_reldiff": {
+   "min": 0.004172708935323371,
+   "median": 0.32520532300870475,
+   "max": 0.9024600243421282
+  },
+  "rot_vs_captured_D_reldiff": {
+   "min": 7.822171991267105e-08,
+   "median": 9.176409474660214e-08,
+   "max": 1.1721879345324062e-07
+  }
+ },
+ "glm_commutant_residual": {
+  "all": {
+   "min": 0.4210928094145774,
+   "median": 0.8066019432452721,
+   "max": 0.9931645119394129
+  },
+  "per_layer": [
+   {
+    "min": 0.49086026651258746,
+    "median": 0.9814870235725552,
+    "max": 0.9925713121089181
+   },
+   {
+    "min": 0.4210928094145774,
+    "median": 0.9859109040221221,
+    "max": 0.9931645119394129
+   },
+   {
+    "min": 0.5161765917775268,
+    "median": 0.9280487559842266,
+    "max": 0.9931276623829861
+   },
+   {
+    "min": 0.4901257202197049,
+    "median": 0.7129155027071803,
+    "max": 0.9847017162804145
+   },
+   {
+    "min": 0.5079854967517232,
+    "median": 0.6630374154967389,
+    "max": 0.8377427924084295
+   }
+  ],
+  "note": "||G - Pi_comm G||_F/||G||_F of the trained G_LM per prompt/layer/head; Pi_comm projects onto the RoPE commutant (nonresonant spectrum) in the rotation eigenbasis; measures use of the dk^2-dk absolute-position-sensitive directions of the positional-codimension corollary on this checkpoint"
+ },
+ "raw_records": {
+  "file": "audit_raw.npz",
+  "sha256": "5eac5bfc076414839381daf516a48aa984e50aa185777c77564f0f93dee95d0a"
+ },
+ "jacobians_v2": {
+  "composite_smax": {
+   "min": 9.969372781679698e-20,
+   "median": 4.8900990293377385e-12,
+   "max": 3.6143037638114774e-07
+  },
+  "composite_smax_per_layer": [
+   {
+    "min": 3.197972869462838e-11,
+    "median": 3.197972869462838e-11,
+    "max": 3.197972869462838e-11
+   },
+   {
+    "min": 1.4419262750999127e-16,
+    "median": 1.4419268595167247e-16,
+    "max": 1.441927406607434e-16
+   },
+   {
+    "min": 9.969372781679698e-20,
+    "median": 9.969372781679698e-20,
+    "max": 9.969372781679698e-20
+   },
+   {
+    "min": 4.890062708577787e-12,
+    "median": 4.8900990293377385e-12,
+    "max": 4.8901037344918956e-12
+   },
+   {
+    "min": 3.46835002384975e-07,
+    "median": 3.5242641912652684e-07,
+    "max": 3.6143037638114774e-07
+   }
+  ],
+  "composite_smin": {
+   "min": 2.298263756010666e-34,
+   "median": 1.0214458130413721e-26,
+   "max": 5.999248644680485e-19
+  },
+  "per_unit_smax": {
+   "min": 1.4716414843337391e-13,
+   "median": 0.468350442047319,
+   "max": 20.812422076016183
+  },
+  "pairwise_within": {
+   "min": 0.0,
+   "median": 0.0,
+   "max": 4.6186476455361135e-06
+  },
+  "pairwise_cross": {
+   "min": 0.0,
+   "median": 0.0,
+   "max": 4.555605327125562e-06
+  },
+  "n_rows_per_layer": 128,
+  "n_pairs": {
+   "within": 765,
+   "cross": 694,
+   "attempted_within": 1000,
+   "attempted_cross": 1000
+  },
+  "note": "sampled pointwise statistics on visited rows; not a tube-uniform certificate.  Pair counts: 200 draws per layer each way are ATTEMPTED; draws with coincident prompt indices (cross) or denominators below 1e-12 are skipped, so the retained counts are what the summaries are computed over -- report those, never the attempted 1000 (fourth-review reporting finding)"
+ },
+ "budget": {
+  "C_G": {
+   "min": 9.31274146731501e-14,
+   "median": 7462838.621435717,
+   "max": 1225134816071478.5
+  },
+  "C_G_floor": {
+   "min": 9.31274146731501e-14,
+   "median": 91954609.60148686,
+   "max": 1282565328916894.0
+  },
+  "headfac": {
+   "min": 0.011748904789239288,
+   "median": 8.535031132681542,
+   "max": 73.68021852856182
+  },
+  "powfac": {
+   "min": 403027.5717197628,
+   "median": 10357454522.03338,
+   "max": 582166154513.8662
+  },
+  "iswig": {
+   "min": 3.8987976043210875e-11,
+   "median": 0.018250103789045936,
+   "max": 1706.1596336976072
+  },
+  "Wn": {
+   "min": 8.294856203363592e-10,
+   "median": 0.02150863315117025,
+   "max": 2.261641010411995
+  },
+  "an": {
+   "min": 0.3600016286170383,
+   "median": 0.9233658441371848,
+   "max": 1.8442864928010563
+  },
+  "powfac_at_eps_floor": {
+   "min": 2846907.524060806,
+   "median": 169236017400.5703,
+   "max": 1262519459387.7188
+  },
+  "U_obs": {
+   "min": 3.8987976042070827e-11,
+   "median": 0.018006594851613045,
+   "max": 78.7081527709961
+  },
+  "ALM_lo": {
+   "min": 9.999999717180685e-10,
+   "median": 2.808671961673781e-09,
+   "max": 1.8122459266578517e-07
+  },
+  "ALM_hi": {
+   "min": 9.999999717180685e-10,
+   "median": 0.0001638088360778056,
+   "max": 6194.97314453125
+  },
+  "note": "sample-extrema proxy: A_LM range, U, and operator norms are maxima/minima over the eight prompt passes only; derivative factors are certified analytic envelopes on [-U, U]; C_G_floor uses the architectural floor 1e-9 in place of the measured A_LM minimum",
+  "eps_spec_hypothetical": {
+   "formula": "2^-24 * max ||G_LM||_F over layers/heads/prompts",
+   "G_F_max": 563.0385131835938,
+   "value": 3.35597105731722e-05,
+   "label": "hypothetical single-rounding representation radius; the measured cached-vs-recomputed Delta G_LM is 0 bitwise"
+  }
+ },
+ "chain": {
+  "per_layer": [
+   {
+    "layer": 0,
+    "WO": 1.8996442470065766,
+    "WQ": 4.07932938146232,
+    "WK": 4.5042760875573,
+    "WV": 2.6280535599390125,
+    "Gmax": 175.06286880079222,
+    "Lattn": 47241.04037401573,
+    "Lffn": 727.0527394366314,
+    "LLN1": 17.70815236493334,
+    "LLN2": 0.5138970104015009,
+    "vmin_ln1": 0.0027863581630924858,
+    "vmin_ln2": 0.13989821560437019,
+    "Llayer": 312997470.67223656
+   },
+   {
+    "layer": 1,
+    "WO": 2.2788637072255202,
+    "WQ": 3.615169537429536,
+    "WK": 4.473015272231953,
+    "WV": 2.9869041861684877,
+    "Gmax": 190.79647104458084,
+    "Lattn": 49576.1915502958,
+    "Lffn": 3966.401689102109,
+    "LLN1": 22.963480590664968,
+    "LLN2": 0.7535261543218874,
+    "vmin_ln1": 0.0012942417563800265,
+    "vmin_ln2": 0.18326362418596043,
+    "Llayer": 3403487352.3544106
+   },
+   {
+    "layer": 2,
+    "WO": 2.200090505449693,
+    "WQ": 4.614869519594974,
+    "WK": 6.533313922985957,
+    "WV": 2.691022493032315,
+    "Gmax": 141.82720610333746,
+    "Lattn": 76957.02177794796,
+    "Lffn": 1645.6961215228725,
+    "LLN1": 17.851420464929614,
+    "LLN2": 0.6292446529546589,
+    "vmin_ln1": 0.0022844592451306553,
+    "vmin_ln2": 0.17745634284422987,
+    "Llayer": 1423507210.2322493
+   },
+   {
+    "layer": 3,
+    "WO": 2.268565607580052,
+    "WQ": 5.359856019516853,
+    "WK": 8.197959601720335,
+    "WV": 2.8614494806116957,
+    "Gmax": 191.31056366464497,
+    "Lattn": 114009.3611630005,
+    "Lffn": 1581.0600775726207,
+    "LLN1": 17.145021523623093,
+    "LLN2": 0.6677306045936175,
+    "vmin_ln1": 0.0018432682921832888,
+    "vmin_ln2": 0.17908413482678595,
+    "Llayer": 2064936065.6493888
+   },
+   {
+    "layer": 4,
+    "WO": 2.616263818190035,
+    "WQ": 4.757990758739822,
+    "WK": 7.293064611363107,
+    "WV": 2.5645126749991434,
+    "Gmax": 56.608645047901554,
+    "Lattn": 108615.62600974887,
+    "Lffn": 813.4072799057527,
+    "LLN1": 8.865831392828389,
+    "LLN2": 15.24242893434752,
+    "vmin_ln1": 0.0038171945262511276,
+    "vmin_ln2": 0.1068051817721997,
+    "Llayer": 11953954592.626451
+   }
+  ],
+  "Wvocab": 175.26638628918025,
+  "note": "sample-extrema worst-case proxy, NOT a tube or global certificate: activation/LN/operator extrema are maxima/minima over the eight prompt passes only (hooks removed before the decode experiment), LN factors use ENDPOINT minimum variances, and the factors' extrema are attained at unrelated sample points; derivative factors are certified analytic envelopes on the sampled [-U, U]; LN factors max|gamma|/sqrt(vmin+eps), FFN by gate product rule.  Assembly (v4): each injection traverses its own layer's post-attention remainder LLN1*(1+Lffn)*LLN2 before the downstream Llayer products (v3 omitted the same-layer remainder)",
+  "end_to_end_coefficient": 7.272773110805233e+46,
+  "bound_at_eps_spec": 2.4407216066297285e+42,
+  "min_margin_over_decode": 0.005985260009765625,
+  "margin_criterion": {
+   "factor": 2,
+   "threshold": 0.0029926300048828125,
+   "satisfied": false
+  },
+  "orders_above_half_margin": 44.91146521981232
+ },
+ "decode": [
+  {
+   "prompt": 0,
+   "S0": 38,
+   "min_margin": 0.10297250747680664,
+   "median_margin": 2.559441089630127,
+   "max_dlogit": 2.574920654296875e-05,
+   "median_dlogit": 1.0311603546142578e-05,
+   "argmax_agree": true,
+   "n_disagree": 0,
+   "margin_criterion_2B": true,
+   "epsG_rel_rms_max_over_steps": 0.0,
+   "epsG_absmax_over_steps": 0.0,
+   "continuation": "The slope of the pile is then reached by the slope of the pile, and the slope of the pile is then reached by the slope of the pile. The slope of the pile is then reached by the slope of the pile, and the",
+   "rep_stats": {
+    "distinct1": 0.26666666666666666,
+    "distinct2": 0.3409090909090909,
+    "distinct3": 0.3953488372093023,
+    "dup4_frac": 0.5476190476190477,
+    "n_tokens": 45
+   }
+  },
+  {
+   "prompt": 1,
+   "S0": 40,
+   "min_margin": 0.16684722900390625,
+   "median_margin": 2.516022205352783,
+   "max_dlogit": 2.288818359375e-05,
+   "median_dlogit": 9.298324584960938e-06,
+   "argmax_agree": true,
+   "n_disagree": 0,
+   "margin_criterion_2B": true,
+   "epsG_rel_rms_max_over_steps": 0.0,
+   "epsG_absmax_over_steps": 0.0,
+   "continuation": "The matrix is a matrix of nonnegative integers, and the matrix is a matrix of nonnegative integers. The matrix is a matrix of nonnegative integers, and the matrix is a matrix of nonnegative integers. The matrix",
+   "rep_stats": {
+    "distinct1": 0.2777777777777778,
+    "distinct2": 0.34285714285714286,
+    "distinct3": 0.38235294117647056,
+    "dup4_frac": 0.5757575757575757,
+    "n_tokens": 36
+   }
+  },
+  {
+   "prompt": 2,
+   "S0": 42,
+   "min_margin": 0.013874530792236328,
+   "median_margin": 3.467546224594116,
+   "max_dlogit": 3.62396240234375e-05,
+   "median_dlogit": 1.049041748046875e-05,
+   "argmax_agree": true,
+   "n_disagree": 0,
+   "margin_criterion_2B": true,
+   "epsG_rel_rms_max_over_steps": 0.0,
+   "epsG_absmax_over_steps": 0.0,
+   "continuation": "The acting was a complete waste of time. The acting was a complete waste of time. The acting was a complete waste of time. The acting was a complete waste of time. The acting was a complete waste of time. The acting was",
+   "rep_stats": {
+    "distinct1": 0.18604651162790697,
+    "distinct2": 0.19047619047619047,
+    "distinct3": 0.1951219512195122,
+    "dup4_frac": 0.8,
+    "n_tokens": 43
+   }
+  },
+  {
+   "prompt": 3,
+   "S0": 41,
+   "min_margin": 0.005985260009765625,
+   "median_margin": 1.170867681503296,
+   "max_dlogit": 3.0517578125e-05,
+   "median_dlogit": 9.834766387939453e-06,
+   "argmax_agree": true,
+   "n_disagree": 0,
+   "margin_criterion_2B": true,
+   "epsG_rel_rms_max_over_steps": 0.0,
+   "epsG_absmax_over_steps": 0.0,
+   "continuation": "The clockmaker was a man who had been a man for a long time, and he was a man who had been a man for a long time. He was a man who had been a man for a long time, and he was",
+   "rep_stats": {
+    "distinct1": 0.3409090909090909,
+    "distinct2": 0.4186046511627907,
+    "distinct3": 0.47619047619047616,
+    "dup4_frac": 0.4878048780487805,
+    "n_tokens": 44
+   }
+  }
+ ],
+ "dag_losses": {
+  "ALM": {
+   "min": 0.0,
+   "median": 3.5565594913578025e-10,
+   "max": 6.112234260324811e-05
+  },
+  "AP": {
+   "min": 62.70788177744174,
+   "median": 1119.609110451985,
+   "max": 41460.72874295722
+  },
+  "GLM": {
+   "min": 4.8754264819184305,
+   "median": 1268.4949980186161,
+   "max": 28173.466219683552
+  }
+ },
+ "order_parameter": {
+  "A": {
+   "rms": {
+    "min": 0.0,
+    "median": 0.0,
+    "max": 4.86905983571575e-09
+   },
+   "signed": {
+    "min": 0.0,
+    "median": 0.0,
+    "max": 3.0890610882545674e-08
+   }
+  },
+  "ALM": {
+   "rms": {
+    "min": 0.0,
+    "median": 0.0,
+    "max": 3.439775120218742e-09
+   },
+   "signed": {
+    "min": 0.0,
+    "median": 0.0,
+    "max": 5.5601555181976564e-09
+   }
+  },
+  "AP": {
+   "rms": {
+    "min": 0.0,
+    "median": 0.0,
+    "max": 8.609931891328305e-13
+   },
+   "signed": {
+    "min": 0.0,
+    "median": 0.0,
+    "max": 3.2981362472780343e-12
+   }
+  },
+  "GLM": {
+   "rms": {
+    "min": 0.0,
+    "median": 0.0,
+    "max": 0.0
+   },
+   "signed": {
+    "min": 0.0,
+    "median": 0.0,
+    "max": 0.0
+   }
+  }
+ },
+ "order_parameter_note": "rms = RMS-normalized piecewise statistic per the paper's definition; signed = SYMMETRIZED signed-mean normalization 0.5*(|mu_1|+|mu_2|) in the denominator, a symmetric adaptation of the source papers' convention (|mu_1| for run-1 vs run-2, |mu_C| for run-1 vs cached), not the literal source normalization; the two normalizations' maxima differ and must be reported separately, never as a single value 'under both'",
+ "stochastic_continuations": [
+  {
+   "prompt": 0,
+   "seed": 100,
+   "text": "Thus, aggregate rock pile strength with forward-impact perspective is the only context in which to effectively process the dust \u2013 therefore, it must be interpreted to have something of value. Keywords - meteorological studies - mining -mite slag -angabend Academic Press. 275 copies. 504",
+   "rep_stats": {
+    "distinct1": 0.9318181818181818,
+    "distinct2": 1.0,
+    "distinct3": 1.0,
+    "dup4_frac": 0.0,
+    "n_tokens": 44
+   }
+  },
+  {
+   "prompt": 0,
+   "seed": 101,
+   "text": "Similarly, by  siege of an isolated path in a boulder at a confluence, a significant drop of water can be observed in rapid sections of the stream (see Figure 11). The removal of virtually any traces of life in the stream greatly reduces mortality, reaches a maximum point within a mile (see Figure ",
+   "rep_stats": {
+    "distinct1": 0.7358490566037735,
+    "distinct2": 0.9615384615384616,
+    "distinct3": 1.0,
+    "dup4_frac": 0.0,
+    "n_tokens": 53
+   }
+  },
+  {
+   "prompt": 1,
+   "seed": 100,
+   "text": "Thus, aggregate probability distributions with Arrival Green wages have a Tibetan Y through Y Hurd Prong. 175 (not available) was found out by De households of the birth coefficient given the dominated trend and  VW(=1.5) as the depicting likelihood distributions (E==0).",
+   "rep_stats": {
+    "distinct1": 0.9024390243902439,
+    "distinct2": 1.0,
+    "distinct3": 1.0,
+    "dup4_frac": 0.0,
+    "n_tokens": 41
+   }
+  },
+  {
+   "prompt": 1,
+   "seed": 101,
+   "text": "For zero by  siege is an polynomial [Q.35, L.1, S.n2, Q.4] or the centration (k aptitude) for prove; S4 = 20^2 <0xE2><0x88><0x92> 1 = 0 (k 0 or k <0xE2><0x88>",
+   "rep_stats": {
+    "distinct1": 0.8666666666666667,
+    "distinct2": 1.0,
+    "distinct3": 1.0,
+    "dup4_frac": 0.0,
+    "n_tokens": 30
+   }
+  },
+  {
+   "prompt": 2,
+   "seed": 100,
+   "text": "Rating: aggregate Hunting Will Save You Green Eggs This Tibetan green eggs is bright and very tasty. You will enjoy the taste of these eggs. It is a rich accent of the lightly sized canning greens and fruit such as cucumbers, spinach, spinach and sukutle. It has a rich flavor",
+   "rep_stats": {
+    "distinct1": 0.82,
+    "distinct2": 0.9795918367346939,
+    "distinct3": 1.0,
+    "dup4_frac": 0.0,
+    "n_tokens": 50
+   }
+  },
+  {
+   "prompt": 2,
+   "seed": 101,
+   "text": "If you are a guy trying to stay around in a post-human con eventually, a western tragedy might be possible. Physically, it looks like a February decision for a movie. I don\u2019t think that is the way to go. DO NOT SCULY NOW (it will sound like Matthew Perry\u2019s",
+   "rep_stats": {
+    "distinct1": 0.8775510204081632,
+    "distinct2": 1.0,
+    "distinct3": 1.0,
+    "dup4_frac": 0.0,
+    "n_tokens": 49
+   }
+  },
+  {
+   "prompt": 3,
+   "seed": 100,
+   "text": "Thus, he watched them with withholding Green Egg Glasses the forever calling time to the Prongs: \u2013 The hour will be movements, the traditional mark of time, there will be no given time... \u2013 The clock will be just now crawling back, the Mail and the clocklessly moving Christ Jesus. The",
+   "rep_stats": {
+    "distinct1": 0.7843137254901961,
+    "distinct2": 0.94,
+    "distinct3": 1.0,
+    "dup4_frac": 0.0,
+    "n_tokens": 51
+   }
+  },
+  {
+   "prompt": 3,
+   "seed": 101,
+   "text": "Or another time, siege moments. Uneven in a world at large, eventually, a clock turned a nightmare. Contra Physical Change (ATC) is a short exposure series about countless civilisations on virtually every continent. It is written as an attempt to provide a specific communication model within a community building process, though",
+   "rep_stats": {
+    "distinct1": 0.8823529411764706,
+    "distinct2": 1.0,
+    "distinct3": 1.0,
+    "dup4_frac": 0.0,
+    "n_tokens": 51
+   }
+  },
+  {
+   "prompt": 4,
+   "seed": 100,
+   "text": "Spread the mixture generously on your 6-inch bottom loaf pan, and bake bright and early-morning: \u2013 Place the loaf pan on your bread rack. Press the pan offset into the bottom of the loaf pan and then smooth over, spreading the dairy based, light brown fibers with a wooden spoon. Cover and let",
+   "rep_stats": {
+    "distinct1": 0.7169811320754716,
+    "distinct2": 0.9423076923076923,
+    "distinct3": 0.9803921568627451,
+    "dup4_frac": 0.0,
+    "n_tokens": 53
+   }
+  },
+  {
+   "prompt": 4,
+   "seed": 101,
+   "text": "For another 8 siege moments, mix around in a bowl at a confectionery mass. If you don\u2019t have a bag or container I can\u2019t tell you how to combine it with sourdough. To add flavor, mix properly. To cling to a mask completely, you may just need tohin",
+   "rep_stats": {
+    "distinct1": 0.8333333333333334,
+    "distinct2": 1.0,
+    "distinct3": 1.0,
+    "dup4_frac": 0.0,
+    "n_tokens": 48
+   }
+  }
+ ]
+}

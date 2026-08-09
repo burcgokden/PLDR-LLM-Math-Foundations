@@ -1,0 +1,67 @@
+# CI for the Lean formalization and the (model-free) audit tests.
+#
+# Jobs:
+#   lean-build   -- elan toolchain from lean-toolchain, mathlib binary
+#                   cache, `lake build` (fails on any error; the pinned
+#                   manifest must be in sync with lakefile.toml, so a
+#                   "manifest out of date" state fails the sync check),
+#                   a forbidden-token scan (sorry/admit/axiom/unsafe),
+#                   and the axiom audit (scripts/check_axioms.py: a
+#                   #print-axioms sweep over every exported theorem
+#                   that fails on anything beyond propext /
+#                   Classical.choice / Quot.sound)
+#   python-tests -- the audit's model-free unit tests (numpy only):
+#                   numerical helpers against hand computations and
+#                   finite differences (incl. the sentinel exponent-
+#                   indexing test and the miniature-decoder chain
+#                   oracle), request-template and scoring-protocol
+#                   transcriptions, toy-decoder oracles, and
+#                   recomputation of every shipped results-file summary
+#                   from the shipped raw arrays
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lean-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan (toolchain from lean-toolchain)
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Manifest in sync with lakefile
+        run: |
+          grep -A7 '"name": "mathlib"' lake-manifest.json | grep '"inputRev"' \
+            | grep -q "$(grep '^rev' lakefile.toml | cut -d'"' -f2)"
+      - name: Get mathlib binary cache
+        run: ~/.elan/bin/lake exe cache get
+      - name: Build
+        run: ~/.elan/bin/lake build
+      - name: Forbidden-token scan
+        run: |
+          if grep -rnEw "sorry|admit|axiom|unsafe" \
+               PldrLlmMathFoundations PldrLlmMathFoundations.lean; then
+            echo "forbidden token found" >&2; exit 1
+          fi
+      - name: Axiom audit (allowed: propext, Classical.choice, Quot.sound)
+        run: python3 scripts/check_axioms.py
+
+  python-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numpy (tests are model-free)
+        run: pip install numpy
+      - name: Audit unit + shipped-results tests
+        working-directory: audit
+        run: python -m unittest -v
