@@ -11,7 +11,7 @@
   "seed": 0,
   "cudnn_deterministic": true,
   "modeling_file_sha256": "e5cbaa6c5433364ee15051e644925b0f74c3968159d663ce1aab4fb985ac26f0",
-  "audit_commit": "a7a7e47c2934e764e2484a4e3a74a4527105017e",
+  "audit_commit": "78ba3fb0f48ab5438cd61a4082d550723e76b06c",
   "gpu": "NVIDIA GeForce RTX 4090"
  },
  "twirl_analytic": {
@@ -427,7 +427,7 @@
    "attempted_within": 1000,
    "attempted_cross": 1000
   },
-  "note": "sampled pointwise statistics on visited rows; not a tube-uniform certificate.  Pair counts: 200 draws per layer each way are ATTEMPTED; draws with coincident prompt indices (cross) or denominators below 1e-12 are skipped, so the retained counts are what the summaries are computed over -- report those, never the attempted 1000 (fourth-review reporting finding)"
+  "note": "sampled pointwise statistics on visited rows; not a tube-uniform certificate.  Pair counts: 200 draws per layer each way are ATTEMPTED; draws with coincident prompt indices (cross) or denominators below 1e-12 are skipped, so the retained counts are what the summaries are computed over -- report those, never the attempted 1000"
  },
  "budget": {
   "C_G": {
@@ -572,7 +572,7 @@
    }
   ],
   "Wvocab": 175.26638628918025,
-  "note": "sample-extrema worst-case proxy, NOT a tube or global certificate: activation/LN/operator extrema are maxima/minima over the eight prompt passes only (hooks removed before the decode experiment), LN factors use ENDPOINT minimum variances, and the factors' extrema are attained at unrelated sample points; derivative factors are certified analytic envelopes on the sampled [-U, U]; LN factors max|gamma|/sqrt(vmin+eps), FFN by gate product rule.  Assembly (v4): each injection traverses its own layer's post-attention remainder LLN1*(1+Lffn)*LLN2 before the downstream Llayer products (v3 omitted the same-layer remainder)",
+  "note": "sample-extrema worst-case proxy, NOT a tube or global certificate: activation/LN/operator extrema are maxima/minima over the eight prompt passes only (hooks removed before the decode experiment), LN factors use ENDPOINT minimum variances, and the factors' extrema are attained at unrelated sample points; derivative factors are certified analytic envelopes on the sampled [-U, U]; LN factors max|gamma|/sqrt(vmin+eps), FFN by gate product rule.  Assembly: each injection traverses its own layer's post-attention remainder LLN1*(1+Lffn)*LLN2 before the downstream Llayer products",
   "end_to_end_coefficient": 7.272773110805233e+46,
   "bound_at_eps_spec": 2.4407216066297285e+42,
   "min_margin_over_decode": 0.005985260009765625,
