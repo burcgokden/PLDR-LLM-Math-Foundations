@@ -1,0 +1,2 @@
+# Model-free tests and retained-summary reconstruction; Python 3.14.6 in CI.
+numpy==2.4.4

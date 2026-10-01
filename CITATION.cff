@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: >-
+  Please cite the paper below when using this work. For the software,
+  also record the exact Git commit or release tag used.
+type: software
+title: PLDR-LLM-Math-Foundations
+authors:
+  - family-names: Gokden
+    given-names: Burc
+repository-code: https://github.com/burcgokden/PLDR-LLM-Math-Foundations
+url: https://github.com/burcgokden/PLDR-LLM-Math-Foundations
+license: Apache-2.0
+preferred-citation:
+  type: article
+  title: >-
+    Power law graph attention: exact generalization of scaled dot-product
+    attention, empirical collapse at inference
+  authors:
+    - family-names: Gokden
+      given-names: Burc
+  journal: arXiv
+  year: 2026
+  month: 8
+  date-released: '2026-08-10'
+  version: '1'
+  doi: 10.48550/arXiv.2608.10288
+  url: https://arxiv.org/abs/2608.10288v1

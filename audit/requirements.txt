@@ -1,19 +1,11 @@
-# Python environment for the numerical audits (see README.md).
-#
-# The released checkpoint's Hugging Face port targets transformers
-# 4.56.1; under that version the checkpoint loads and runs as
-# released.  Newer major versions (transformers 5.x) need two
-# load-compatibility workarounds (see README.md); the audit scripts
-# already contain the second one, which is harmless under 4.x.
-#
-# The exact library versions behind the shipped results are recorded
-# in each results file's "environment" block.
+# Direct runtime dependencies, pinned to the shipped results' environment
+# blocks (Python 3.14.6). See README.md for CUDA build selection and scope.
+# Model-free tests need only the NumPy pin in requirements-checks.txt.
+-r requirements-checks.txt
+# The released checkpoint targets the 4.x mask API; keep this version.
 transformers==4.56.1
-# Install the torch build matching your CUDA setup for GPU runs (the
-# audits run on GPU by default when one is available).
-torch>=2.4
-numpy
-huggingface_hub
-# audit_seq.py reads the pinned benchmark/held-out corpus parquet
-# files directly; pyarrow is its only additional dependency.
-pyarrow
+# Pin the PyTorch release; the recorded GPU build is 2.12.1+cu132.
+torch==2.12.1
+huggingface_hub==0.36.2
+# audit_seq.py reads the pinned benchmark/corpus parquet files directly.
+pyarrow==24.0.0

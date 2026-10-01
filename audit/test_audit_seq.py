@@ -505,40 +505,9 @@ class TestShippedArtifacts(unittest.TestCase):
 
     def test_rederive_all_summaries(self):
         self.need()
-        for tag in ("soc110m5", "soc110m1"):
-            wt = self.res[tag]["s1_heldout"]
-            re_wt = derive_wikitext_summary(
-                self.raw[f"{tag}_wikitext_seq_lp"],
-                self.raw[f"{tag}_wikitext_blk_lp"])
-            self.assertEqual(
-                json.dumps(wt["summary"], sort_keys=True),
-                json.dumps(json.loads(json.dumps(re_wt, default=float)),
-                           sort_keys=True))
-            sections = dict(self.res[tag]["s2_benchmarks"])
-            sections.update(self.res[tag].get("s2_auxiliary", {}))
-            for task, rec in sections.items():
-                if f"{tag}_{task}_labels" in self.raw:
-                    re_t = derive_mc2_summary(
-                        self.raw[f"{tag}_{task}_seq_flat"],
-                        self.raw[f"{tag}_{task}_blk_flat"],
-                        self.raw[f"{tag}_{task}_cand_lens"],
-                        self.raw[f"{tag}_{task}_item_ncands"],
-                        self.raw[f"{tag}_{task}_labels"],
-                        self.raw[f"{tag}_{task}_char_lens"])
-                else:
-                    re_t = derive_task_summary(
-                        self.raw[f"{tag}_{task}_seq_flat"],
-                        self.raw[f"{tag}_{task}_blk_flat"],
-                        self.raw[f"{tag}_{task}_cand_lens"],
-                        self.raw[f"{tag}_{task}_item_ncands"],
-                        self.raw[f"{tag}_{task}_gold"],
-                        self.raw[f"{tag}_{task}_char_lens"])
-                self.assertEqual(
-                    json.dumps(rec["summary"], sort_keys=True),
-                    json.dumps(json.loads(json.dumps(re_t,
-                                                     default=float)),
-                               sort_keys=True),
-                    msg=f"{tag}/{task}")
+        from reconstruct_summaries import run
+        report = run()
+        self.assertEqual(report["status"], "passed")
 
     def test_published_section_is_mc2_not_mc1(self):
         """The published-task section must contain truthfulqa_mc2 and

@@ -6,6 +6,10 @@ formalization and numerical-audit suite for the paper
 > Burc Gokden, *Power law graph attention: exact generalization of
 > scaled dot-product attention, empirical collapse at inference*.
 
+[arXiv Paper](https://arxiv.org/abs/2608.10288)
+· [Citation](CITATION.cff)
+· [Audit instructions](audit/README.md)
+
 The paper gives a full formal mathematical treatment of the Large
 Language Model from Power Law Decoder Representations (PLDR-LLM) and
 its attention mechanism, Power Law Graph Attention (PLGA), and proves
@@ -129,11 +133,24 @@ construction (pinned cuBLAS workspace, forced deterministic
 algorithms): two back-to-back runs on a fixed device reproduce the
 results byte-for-byte. The test suite is model-free (numpy only; no
 GPU, no checkpoint download) and re-derives every shipped JSON
-summary from the shipped raw arrays, so the summaries cannot silently
-drift from the raw data. See [`audit/README.md`](audit/README.md).
+summary from the shipped raw arrays. Sequential reconstruction uses
+[quantity-specific roundoff budgets](audit/NUMERICAL_COMPARISON.md),
+with exact input hashes, structural checks and scientific decisions.
+The published result files remain the reference data. See
+[`audit/README.md`](audit/README.md) for the pinned environment and commands.
+
+## Citation
+
+Use [`CITATION.cff`](CITATION.cff) or GitHub's **Cite this repository**
+menu for the paper citation. The preferred citation identifies preprint
+version 1. When citing the code or reproducing an audit, also record the
+exact Git commit or release tag used; manuscript and software versions
+are separate identifiers.
 
 ## Related repositories
 
+- [PLDR-LLM-Training-Dynamics](https://github.com/burcgokden/PLDR-LLM-Training-Dynamics)
+  — code and evidence for the training and inference dynamics monograph.
 - [LLM-from-Power-Law-Decoder-Representations](https://github.com/burcgokden/LLM-from-Power-Law-Decoder-Representations)
 - [PLDR-LLM-with-KVG-cache](https://github.com/burcgokden/PLDR-LLM-with-KVG-cache)
 - [PLDR-LLM-Self-Organized-Criticality](https://github.com/burcgokden/PLDR-LLM-Self-Organized-Criticality)

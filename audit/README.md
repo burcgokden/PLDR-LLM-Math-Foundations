@@ -139,8 +139,15 @@ blocks record the exact library versions, seed, and device used.
   and the SHA-256 of its raw-records archive.
 - `audit_raw.npz` / `audit_online_raw.npz` / `audit_seq_raw.npz` —
   raw per-instance arrays behind every summary.
-- `requirements.txt` — the minimal dependency set (transformers
-  pinned; see [Environment](#environment)).
+- `summary_compare.py` / `reconstruct_summaries.py` /
+  `test_summary_compare.py` — quantity-specific sequential-summary comparison,
+  independent decision and Decimal checks, and rejection controls; see the
+  [numerical comparison contract](NUMERICAL_COMPARISON.md).
+- `retained-inputs.json` / `sequential-decisions.json` — immutable input hashes
+  and exact individual scientific decisions for offline reconstruction.
+- `requirements.txt` — pinned direct dependencies for model acquisition.
+- `requirements-checks.txt` — the NumPy pin shared by the model-free tests
+  and the full audit environment; see [Environment](#environment).
 
 The decoded continuations in the main results file
 (`decode[*].continuation` for greedy, `stochastic_continuations` for
@@ -155,9 +162,13 @@ evaluations, not to this audit.
 
 ## Running
 
+Run from `audit/` with Python 3.14.6. These commands acquire new model
+measurements and write the result files named below. Use [Tests](#tests)
+to validate the retained evidence without acquiring new measurements.
+
 ```sh
 python3 -m venv venv && . venv/bin/activate
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 python3 audit.py         # writes audit_results.json + audit_raw.npz
 python3 audit_h.py       # merges the order parameter into both
 python3 audit_online.py  # writes audit_online_results.json/.npz
@@ -186,7 +197,10 @@ them.
 ## Tests
 
 ```sh
-python3 -m unittest -v      # or: pytest
+python3 -m venv venv && . venv/bin/activate
+python -m pip install -r requirements-checks.txt
+python -B -m unittest -v
+python -B reconstruct_summaries.py --output /tmp/pldr-foundations-reconstruction.json
 ```
 
 Run from this directory (test discovery from the repository root
@@ -206,15 +220,46 @@ transcription tests of every benchmark request template and of the
 TruthfulQA-MC2 metric against hand-built documents and hand-computed
 values. Finally, the tests recompute every shipped JSON summary from
 the shipped raw arrays (whose SHA-256 each JSON records), so the
-summaries cannot silently drift from the raw data.
+summaries cannot silently drift from the raw data. Sequential summaries use
+the [numerical comparison contract](NUMERICAL_COMPARISON.md): exact retained
+input hashes, types, structure, counts and scientific decisions, with
+quantity-specific binary64 roundoff budgets for derived reductions. The
+standalone reconstruction command reports every changed floating field and
+the independent 80-digit Decimal comparisons without rewriting the archive.
 
 ## Environment
 
-`requirements.txt` lists the minimal dependency set. The released
-checkpoint's Hugging Face port targets `transformers` 4.56.1 (pinned
-there); under it the released files run unmodified. The exact library
-versions, seed, and device behind the shipped results are recorded in
-each results file's `environment` block.
+The direct dependencies in `requirements.txt` and `requirements-checks.txt`
+are pinned to the shipped results' `environment` blocks:
+
+| Package | Pinned release |
+| --- | --- |
+| NumPy | 2.4.4 |
+| Transformers | 4.56.1 |
+| PyTorch | 2.12.1 |
+| huggingface_hub | 0.36.2 |
+| PyArrow | 24.0.0 |
+
+Python 3.14.6 is the recorded acquisition interpreter and the model-free CI
+interpreter. CI installs only `requirements-checks.txt`; the additional
+packages are needed for checkpoint and dataset acquisition. These files pin
+direct dependencies, not the complete transitive dependency tree.
+
+The original GPU runs used `torch==2.12.1+cu132` on an RTX 4090. The
+`torch==2.12.1` requirement pins the release while allowing its CPU/CUDA build
+to match the host. To select the recorded CUDA build, install it first using
+the matching PyTorch wheel index, then install `requirements.txt`:
+
+```sh
+python -m pip install 'torch==2.12.1+cu132' --index-url https://download.pytorch.org/whl/cu132
+python -m pip install -r requirements.txt
+```
+
+The released checkpoint's Hugging Face port targets Transformers 4.56.1;
+under it the released files run unmodified. Library pins alone do not imply
+byte-identical model acquisition on another device or platform. The exact
+library versions, seed and device remain recorded in each results file's
+`environment` block.
 
 Under `transformers` 5.x two load-compatibility issues arise, with no
 effect on the computation once fixed: the port's `create_causal_mask`
