@@ -3,16 +3,18 @@ Copyright 2026 Burc Gokden. Released under the Apache 2.0 license.
 
 # The rank-one singularity condition
 
-At convergence the metric generator `A` of a PLDR-LLM has identical rows:
-`A = 1 αᵀ` (the "learned singularity condition" of arXiv:2502.13502).
-This file formalizes Proposition 3.9 of the paper for the matrix
-`rowClone α` with every row equal to `α`:
+Assume the identical-row configuration `A = 1 αᵀ`, called the learned
+singularity condition in arXiv:2502.13502. This file checks finite real
+matrix identities for `rowClone α`, whose rows equal `α`, as in
+Proposition 3.9 of the paper. It does not assert convergence of every
+trained model to this configuration:
 
 * `rowClone_rank_le_one`  : `rank A <= 1`;
 * `rowClone_rank_eq_one`  : `rank A = 1` exactly when `α ≠ 0`;
 * `rowClone_det_eq_zero`  : `det A = 0` whenever `d >= 2`;
-* `rowClone_mulVec_one`   : the all-ones vector is an eigenvector with
-  eigenvalue the common row sum `s = Σ_j α j`;
+* `rowClone_mulVec_one`   : the multiplication identity `A 1 = s 1`,
+  where `s = Σ_j α j`; when `d > 0`, the all-ones vector is nonzero
+  and this is an eigenvector statement;
 * `rowClone_mul_self` and `rowClone_pow` : `A² = s A` and
   `A^(k+1) = s^k A`, so for `s ≠ 0` the matrix `A / s` is an idempotent
   (oblique projection);
@@ -84,22 +86,24 @@ theorem rowClone_rank_eq_one {α : Fin d → ℝ} (hα : α ≠ 0) :
   rw [Matrix.rank_eq_finrank_span_row, hr]
   simpa using finrank_span_singleton hα
 
-/-- `det A = 0` for `d >= 2`: the singularity observed exactly (determinant
-zero in floating point) on all heads of trained PLDR-LLMs. -/
+/-- Exact-real `det A = 0` for `d >= 2` under the identical-row hypothesis.
+A floating-point zero determinant alone does not establish this hypothesis. -/
 theorem rowClone_det_eq_zero (hd : 2 ≤ d) (α : Fin d → ℝ) :
     (rowClone α).det = 0 := by
   have h01 : (⟨0, by omega⟩ : Fin d) ≠ ⟨1, by omega⟩ := by
     simp [Fin.ext_iff]
   exact Matrix.det_zero_of_row_eq h01 (by funext j; simp)
 
-/-- The all-ones vector is an eigenvector of `A = 1 αᵀ`, with eigenvalue
-the common row sum `s = Σ_j α j`. -/
+/-- The multiplication identity `A 1 = s 1`, with `s = Σ_j α j`.
+For `d > 0`, the all-ones vector is nonzero and has eigenvalue `s`.
+The multiplication identity also holds at dimension zero. -/
 theorem rowClone_mulVec_one (α : Fin d → ℝ) :
     rowClone α *ᵥ (fun _ => 1) = fun _ => ∑ j, α j := by
   funext i
   simp [Matrix.mulVec, dotProduct]
 
-/-- `A² = s A` with `s` the common row sum: `A / s` is idempotent. -/
+/-- `A² = s A` with `s` the common row sum. For `s ≠ 0`, the written
+argument deduces that `A / s` is idempotent. -/
 theorem rowClone_mul_self (α : Fin d → ℝ) :
     rowClone α * rowClone α = (∑ k, α k) • rowClone α := by
   ext i j
@@ -107,7 +111,7 @@ theorem rowClone_mul_self (α : Fin d → ℝ) :
     smul_eq_mul]
   rw [← Finset.sum_mul]
 
-/-- `A^(k+1) = s^k A`: all powers stay on the ray of `A`. -/
+/-- `A^(k+1) = s^k A`: all powers stay in the real span of `A`. -/
 theorem rowClone_pow (α : Fin d → ℝ) (k : ℕ) :
     rowClone α ^ (k + 1) = (∑ j, α j) ^ k • rowClone α := by
   induction k with

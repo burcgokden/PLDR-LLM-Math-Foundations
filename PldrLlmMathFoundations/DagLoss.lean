@@ -12,18 +12,23 @@ the `k = 0` term equal to `d`.  This file proves:
   entrywise nonnegative (closed-walk weights are nonnegative);
 * `trace_pow_nonneg`  : `tr (N^k) ≥ 0` (the geometric side of the
   walk-counting identity, Theorem 4.4 / Remark 4.6);
-* `trace_exp_ge_card` : `tr (exp N) ≥ d`; consequently
-  `tr e^{M⊙M} / dk ≥ 1`, so the absolute value in the implemented DAG
-  loss is analytically redundant;
+* `trace_exp_ge_card` : `tr (exp N) ≥ d`; applied to `N = M ⊙ M`
+  with `d > 0`, this gives `tr e^{M⊙M} / d ≥ 1`, so the absolute value
+  in the normalized logarithmic loss is analytically redundant;
 * `trace_exp_ge_card_add_trace` : the sharper bound
   `tr (exp N) ≥ d + tr N`;
 * `trace_exp_ge_of_diag_bound` : the positivity obstruction of the paper
   (Remark on the DAG loss): if every diagonal entry of `N` is at least
   `ε`, then `tr (exp N) ≥ d + d·ε`.  Applied to `N = M ⊙ M` with
-  `|M i i| ≥ ε₀ > 0` (the tensors `A_LM`, `A_P` have entries `≥ ε₀`),
-  this shows the DAG loss cannot vanish exactly on the strictly positive
-  deductive tensors: the loss is a cycle-content penalty with a positive
-  floor, and reported zeros are floating-point underflow.
+  `|M i i| ≥ ε₀ > 0` gives the unnormalized bound `h(M) ≥ d·ε₀²`.
+  For `d > 0`, monotonicity of the logarithm then gives the normalized
+  floor `log(1 + ε₀²)` as a written step, not a declaration here.
+  `A_LM` has the architectural entry floor; strict positivity of `A_P`
+  does not supply that same uniform floor for arbitrary learned exponents.
+  Computed zeros can be compatible with rounding near one or cancellation
+  in a shifted logarithmic reduction. The positive increment need not
+  underflow. This exact-real module formalizes neither floating-point
+  behavior nor the equality-iff-acyclic converse.
 -/
 import Mathlib
 
@@ -64,9 +69,10 @@ attribute [local instance] Matrix.linftyOpNormedAddCommGroup
 
 /-- `tr (exp N) ≥ d` for entrywise-nonnegative `N`: each diagonal entry
 of `exp N` is at least its `k = 0` term `1`, because all closed-walk
-contributions are nonnegative.  Applied to `N = M ⊙ M` this shows
-`tr e^{M⊙M} / d ≥ 1`, making the absolute value in the implemented DAG
-loss redundant. -/
+contributions are nonnegative. Applied to `N = M ⊙ M` with `d > 0`,
+this shows `tr e^{M⊙M} / d ≥ 1`, making the absolute value in the
+normalized logarithmic loss redundant. The unnormalized theorem also
+holds at dimension zero. -/
 theorem trace_exp_ge_card (N : Matrix (Fin d) (Fin d) ℝ)
     (hN : ∀ i j, 0 ≤ N i j) :
     (d : ℝ) ≤ (exp N).trace := by
@@ -123,13 +129,14 @@ theorem trace_exp_ge_card_add_trace (N : Matrix (Fin d) (Fin d) ℝ)
     _ ≤ ∑ i, (exp N).diag i := Finset.sum_le_sum fun i _ => h1 i
     _ = (exp N).trace := by simp [Matrix.trace]
 
-/-- Positivity obstruction: if every diagonal entry of the
-entrywise-nonnegative `N` is at least `ε`, then
-`tr (exp N) ≥ d + d·ε`.  With `N = M ⊙ M` and `|M i i| ≥ ε₀` (as for
-the strictly positive PLGA tensors, entries `≥ 10⁻⁹`), the DAG loss
-`log (tr e^{M⊙M} / d)` is bounded away from `0`: exact acyclicity is
-unattainable and the loss is a cycle-content penalty with a positive
-floor. -/
+/-- For entrywise nonnegative `N` with `N i i ≥ η`, this declaration proves
+`tr (exp N) ≥ d + d·η`. Applying it to `N = M ⊙ M`, with `d > 0` and
+`|M i i| ≥ ε₀ > 0`, gives `h(M) ≥ d·ε₀²`. Monotonicity of the logarithm
+then gives the normalized floor `log(1 + ε₀²)` in the written argument.
+The architectural entry floor `ε₀ = 10⁻⁹` applies to `A_LM`. The tensor
+`A_P` is strictly positive in exact real arithmetic but has no such uniform
+floor for arbitrary learned powers. No positive-definiteness or
+floating-point claim is made. -/
 theorem trace_exp_ge_of_diag_bound (N : Matrix (Fin d) (Fin d) ℝ)
     (hN : ∀ i j, 0 ≤ N i j) (ε : ℝ) (hdiag : ∀ i, ε ≤ N i i) :
     (d : ℝ) + d * ε ≤ (exp N).trace := by
