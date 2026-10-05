@@ -160,3 +160,15 @@ are separate identifiers.
 ## License
 
 Apache License 2.0; see [LICENSE](LICENSE).
+
+## Published book
+
+[Power Law Graph Attention and PLDR-LLMs: Mathematical Foundations, Training Dynamics, and Predictive Inference](https://www.amazon.com/dp/B0HLS1N6C9), by Burc Gokden,
+is commercially published. Its [Book Companion](https://github.com/burcgokden/PLDR-LLM-Book-Companion)
+provides book-specific code, correspondence and edition-to-release guidance.
+This repository's existing paper/monograph citation retains its original scope.
+
+## Release validation
+
+[RELEASE.md](RELEASE.md) documents the CPU release gate, immutable inputs,
+execution records, separate Lean/GPU scopes and preparation of reviewed tags.

@@ -293,10 +293,16 @@ def dag_loss_value(M, dk=None):
     h >= tr N >= dk * eps^2, while THIS normalized logarithmic loss
     satisfies log(tr e^N / dk) = log(1 + h/dk) >= log(1 + eps^2)
     ~ eps^2 (= 1e-18 at the architectural floor eps = 1e-9).
-    dk * eps^2 is the floor of h, NOT of this loss.  Both floors sit
-    below naive float64 log resolution, so measured 0.0 readings are
-    underflow, exactly as the paper's positivity-obstruction remark
-    states."""
+    dk * eps^2 is the floor of h, not of this loss. A direct normalized
+    trace can round to one before the logarithm. The implemented shifted
+    expression m + log(real(sum(exp(lam - m)))) - log(dk) can also lose
+    the small residual through rounding and cancellation. A positive
+    increment such as 1e-18 is normal in binary64; it need not underflow.
+    The analytic floors alone do not identify the arithmetic step behind
+    a recorded zero. log1p cannot recover an increment already lost in
+    an earlier reduction. This routine retains the recorded algorithm.
+    Strict positivity of A_P does not imply the A_LM architectural floor
+    for arbitrary learned exponents."""
     M = np.asarray(M, dtype=np.float64)
     if dk is None:
         dk = M.shape[0]

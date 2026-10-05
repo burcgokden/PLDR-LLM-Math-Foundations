@@ -659,11 +659,12 @@ class TestShippedResults(unittest.TestCase):
         # ~ 6.4e-17, while the IMPLEMENTED normalized log loss
         # log(tr e^N / dk) = log(1 + h/dk) has floor log(1 + eps^2)
         # ~ eps^2 = 1e-18.  dk*eps^2 is the floor of h, NOT of this
-        # loss.  Both sit below the float64 resolution of a naive log
-        # evaluation, so measured 0.0 readings are the underflow
-        # phenomenon of the paper's positivity-obstruction remark and
-        # only nonnegativity can be asserted here.  A_P's measured
-        # floor is far from underflow and must be strictly positive.
+        # loss. A normalized trace can round to one; the implemented
+        # shifted logarithmic reduction can also lose a small residual
+        # through rounding/cancellation, without underflow of that
+        # positive increment. The ALM record therefore allows zero.
+        # A_P's retained measured minimum is positive. This measurement
+        # does not establish a universal architectural floor for A_P.
         self.assertGreaterEqual(self.R["dag_losses"]["ALM"]["min"], 0.0)
         self.assertGreater(self.R["dag_losses"]["AP"]["min"], 0.0)
 

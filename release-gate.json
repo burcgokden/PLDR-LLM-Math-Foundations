@@ -1,0 +1,46 @@
+{
+  "manifest": "source-manifest.json",
+  "publication": {
+    "url": "https://arxiv.org/pdf/2608.10288v1",
+    "sha256": "5addca2d08491f182e7286d0d18fc2a137637c8649449c579e2a4f81a618dd7d"
+  },
+  "checks": [
+    {
+      "name": "release-controls",
+      "cwd": ".",
+      "argv": [
+        "{python}",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ]
+    },
+    {
+      "name": "foundations-tests",
+      "cwd": "audit",
+      "argv": [
+        "{python}",
+        "-B",
+        "-m",
+        "unittest",
+        "-v"
+      ]
+    },
+    {
+      "name": "reconstruction",
+      "cwd": ".",
+      "argv": [
+        "{python}",
+        "-B",
+        "audit/reconstruct_summaries.py",
+        "--output",
+        "validation/reconstruction.json"
+      ]
+    }
+  ],
+  "schema": "pldr-release-gate-v1"
+}

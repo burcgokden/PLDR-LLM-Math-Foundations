@@ -219,3 +219,5 @@ __marimo__/
 
 # Lean / Lake build artifacts
 /.lake/
+
+/validation/

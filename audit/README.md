@@ -272,3 +272,20 @@ output is NaN. The scripts already perform the second fix, which is
 harmless under 4.x; the first requires editing the checkpoint's
 `modeling_pldrllm.py`. Using the pinned `transformers` version avoids
 both.
+
+## Interpreting computed DAG-loss zeros
+
+For an entrywise-positive matrix whose entries are at least `eps`, the
+unnormalized obstruction has lower bound `dk * eps**2`; the normalized
+logarithmic loss has lower bound `log(1 + eps**2)` in exact real arithmetic.
+The architectural entry floor applies to `A_LM`. Strict positivity of `A_P`
+does not give the same uniform floor under arbitrary learned exponents.
+
+A normalized trace can round to one before taking its logarithm. The implemented
+shifted logarithmic expression can also lose a small residual through rounding
+and cancellation. A positive increment such as `1e-18` is normal in binary64
+and need not underflow. An analytic lower bound alone cannot identify which
+arithmetic step produced a recorded zero; `log1p` cannot recover an increment
+already lost earlier. The retained `A_P` minimum is an observation, not a
+universal architectural bound. These explanations preserve the implemented
+algorithm, test assertions and archived numerical values.
