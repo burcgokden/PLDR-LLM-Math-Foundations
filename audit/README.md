@@ -186,7 +186,7 @@ back to CPU otherwise; override with
 - `AUDIT_MODEL=<path-or-hub-id>` — audit another copy or checkpoint
   (`AUDIT_MODEL_5`/`AUDIT_MODEL_1` for the two-checkpoint audits);
 - `AUDIT_REV=<revision>` — pin a different model revision
-  (`AUDIT_REV_5`/`AUDIT_REV_1` likewise).
+  (`AUDIT_CHECKPOINT_5`/`AUDIT_CHECKPOINT_1` likewise).
 
 Runtime is some minutes per audit on a single consumer GPU, longer on
 CPU. Exact float values depend on the device and library versions;

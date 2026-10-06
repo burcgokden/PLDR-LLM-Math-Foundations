@@ -39,8 +39,8 @@ Sections (run for BOTH released checkpoints):
 Environment:
   AUDIT_ONLINE_DEVICE  cuda|cpu  (default: cuda if available; float32,
                        eager attention either way)
-  AUDIT_MODEL_5 / AUDIT_REV_5    audited checkpoint (SOC-110M-5 pin)
-  AUDIT_MODEL_1 / AUDIT_REV_1    contrast checkpoint (SOC-110M-1 pin)
+  AUDIT_MODEL_5 / AUDIT_CHECKPOINT_5    audited checkpoint (SOC-110M-5 pin)
+  AUDIT_MODEL_1 / AUDIT_CHECKPOINT_1    contrast checkpoint (SOC-110M-1 pin)
 Determinism: as in the main audit, the cuBLAS workspace is pinned and
 deterministic algorithms are forced (without the pin, cuBLAS algorithm
 selection can differ between process launches and ulp-level differences
@@ -87,12 +87,12 @@ CHECKPOINTS = [
     dict(tag="soc110m5",
          model=os.environ.get("AUDIT_MODEL_5",
                               "fromthesky/PLDR-LLM-v51-SOC-110M-5"),
-         rev=os.environ.get("AUDIT_REV_5",
+         rev=os.environ.get("AUDIT_CHECKPOINT_5",
                             "de8e539c0ba1829072f4b8c2c5fae3bde0a3a2d2")),
     dict(tag="soc110m1",
          model=os.environ.get("AUDIT_MODEL_1",
                               "fromthesky/PLDR-LLM-v51-SOC-110M-1"),
-         rev=os.environ.get("AUDIT_REV_1",
+         rev=os.environ.get("AUDIT_CHECKPOINT_1",
                             "7a34e2ca9aa78038683677cfda17fe3a9fe6da8a")),
 ]
 
